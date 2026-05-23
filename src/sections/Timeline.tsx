@@ -21,25 +21,25 @@ export default function Timeline({ onNext }: Props) {
   }
 
   return (
-    <section className="relative min-h-[100dvh] flex items-start px-5 py-16 md:px-20 z-10">
-      <div className="mx-auto w-full max-w-4xl space-y-10 pb-20">
+    <section className="relative min-h-[100dvh] flex items-start px-5 py-12 md:px-20 md:py-16 z-10">
+      <div className="mx-auto w-full max-w-4xl space-y-6 sm:space-y-8 pb-28">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="space-y-1.5 pt-4"
+          className="space-y-1.5 pt-2"
         >
           <p className="text-[11px] tracking-[0.22em] uppercase text-neutral-400">
             Mini Timeline
           </p>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-neutral-800">
+          <h2 className="font-display text-3xl sm:text-4xl text-neutral-800">
             How we got here.
           </h2>
         </motion.div>
 
         {/* Polaroid grid */}
-        <div className="grid gap-3 grid-cols-2 sm:grid-cols-3">
+        <div className="grid gap-2.5 sm:gap-3 grid-cols-2 sm:grid-cols-3">
           {timeline.map((item, i) => (
             <motion.div
               key={item.id}
@@ -52,12 +52,12 @@ export default function Timeline({ onNext }: Props) {
               }}
               whileHover={{ scale: 1.04, rotate: 0, y: -4 }}
               onClick={() => handleCardClick(item.id)}
-              className={`glass-strong rounded-2xl p-4 pb-6 shadow-warm cursor-pointer space-y-3 ${
+              className={`glass-strong rounded-2xl p-3 sm:p-4 pb-4 sm:pb-6 shadow-warm cursor-pointer space-y-2.5 sm:space-y-3 ${
                 item.isLast ? 'ring-1 ring-rose-200' : ''
               }`}
             >
               {/* Image area */}
-              <div className="w-full h-16 sm:h-20 rounded-xl bg-gradient-to-br from-rose-50 to-pink-100/60 flex items-center justify-center text-2xl sm:text-3xl">
+              <div className="w-full h-14 sm:h-20 rounded-xl bg-gradient-to-br from-rose-50 to-pink-100/60 flex items-center justify-center text-2xl sm:text-3xl">
                 {item.emoji}
               </div>
 
@@ -88,7 +88,7 @@ export default function Timeline({ onNext }: Props) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.9, duration: 0.6 }}
-          className="flex justify-end"
+          className="sticky bottom-0 z-20 -mx-1 px-1 pt-2 pb-16 [padding-bottom:calc(env(safe-area-inset-bottom)+4rem)] bg-gradient-to-t from-[#f8f4f1] via-[#f8f4f1]/90 to-transparent flex justify-end"
         >
           <motion.button
             onClick={() => onNext?.()}
